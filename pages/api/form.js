@@ -11,6 +11,7 @@ export default function handler(req, res) {
   // Optional logging to see the responses
   // in the command line where next.js app is running.
   console.log('body: ', body)
+  fs.writeFileSync('data/users.json', JSON.stringify(body));
   // Guard clause checks for first and last name,
   // and returns early if they are not found
   if (!body.first || !body.last) {
@@ -21,9 +22,5 @@ export default function handler(req, res) {
   // Found the name.
   // Sends a HTTP success code
   res.status(200).json({ data: `${body.first} ${body.last}` })
-saveData(body);
 }
 
-function saveData() {
-  fs.writeFileSync('data/users.json', JSON.stringify(users, null, 4));
-}
