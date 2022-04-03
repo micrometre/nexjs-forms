@@ -11,11 +11,26 @@ export async function getStaticProps() {
     },
   };
 }
+export function Form() {
+  return (
+    <form action="/api/form" method="post">
+      <label htmlFor="first">First Name</label>
+      <input type="text" id="first" name="first" required />
+
+      <label htmlFor="last">Last Name</label>
+      <input type="text" id="last" name="last" required />
+
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+
 
 export default function Home ({ allPostsData }) {
   return (
     <Layout home>
       <section className={utilStyles.headingMd}>
+        <Form />
       </section>
           <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
